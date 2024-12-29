@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - TopWrite</title>
+    <link rel="stylesheet" href="assets/css/thankyou.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('assets/images/background2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .thankyou-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        .thankyou-container h1 {
+            color: #1e2a47;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .thankyou-container p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .thankyou-container button {
+            padding: 15px 30px;
+            background: #d4a017;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .thankyou-container button:hover {
+            background: #1e2a47;
+            color: #d4a017;
+            transform: scale(1.05);
+        }
+
+        .thankyou-container img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            background: #f8f8f2;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="thankyou-container">
+        <img src="assets/images/thankyou-icon.png" alt="Thank You">
+        <h1>Thank You for Your Payment!</h1>
+        <p>Your transaction has been successfully completed. A receipt has been sent to your email.</p>
+        <button onclick="goHome()">Back to Home</button>
+    </div>
+
+    <script>
+        function goHome() {
+            window.location.href = 'index.html'; // Redirect to home page
+        }
+    </script>
+</body>
+</html>

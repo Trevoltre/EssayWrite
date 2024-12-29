@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up as a Writer - TopWrite Essay Writers</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/signup.css">
+    <style>
+        body {
+            background: url('assets/images/background.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        main {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #25a244;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, button {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #25a244;
+            color: #fff;
+            cursor: pointer;
+            transition: background-size 0.5s ease-in-out;
+            background: linear-gradient(to right, #25a244 0%, #25a244 100%);
+            background-size: 0% 100%;
+        }
+
+        button:hover {
+            background-size: 100% 100%;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.PNG" alt="TopWrite Logo">
+            <h1>TopWrite Essay Writers</h1>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Sign Up as a Writer</h1>
+        <form id="signupForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+
+            <label for="expertise">Expertise</label>
+            <input type="text" id="expertise" name="expertise" placeholder="Enter your area of expertise (e.g., Biology, History)" required>
+
+            <label for="experience">Years of Experience</label>
+            <input type="number" id="experience" name="experience" min="0" placeholder="Enter your years of experience" required>
+
+            <label for="portfolio">Portfolio Link</label>
+            <input type="url" id="portfolio" name="portfolio" placeholder="Enter your portfolio URL (optional)">
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2024 TopWrite. By Maxwell O. Ochieng. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return;
+            }
+
+            alert("Sign-up successful! Welcome to TopWrite Essay Writers.");
+        });
+    </script>
+</body>
+</html>

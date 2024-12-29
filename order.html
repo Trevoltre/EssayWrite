@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Your Order - TopWrite Essay Writers</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/order.css">
+    <style>
+        body {
+            background: url('assets/images/background.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        main {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d4a017;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        select, input, button {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #25a244;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-size 0.5s ease-in-out;
+            background: linear-gradient(to right, #d4a017 0%, #090438 100%);
+            background-size: 0% 100%;
+        }
+
+        button:hover {
+            background-size: 100% 100%;
+            color: #000;
+        }
+
+        #priceDisplay {
+            font-size: 1.5rem;
+            color:  #070438;
+            text-align: center;
+            margin-top: 20px;
+        }
+        /* Order Page Styles */
+main {
+    background-color: #f8f8f2; /* Off-white */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #d4a017; /* Golden yellow */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #1e2a47; /* Navy blue */
+}
+
+select, input, button {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #1e2a47; /* Navy blue */
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #d4a017; /* Golden yellow */
+    color: white;
+}
+
+#priceDisplay {
+    font-size: 1.5rem;
+    color: #d4a017; /* Golden yellow */
+    text-align: center;
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.PNG" alt="TopWrite Logo">
+            <h1>TopWrite Essay Writers</h1>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="dashboard-client.html">Dashboard</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Place Your Order</h1>
+        <form id="orderForm">
+            <label for="academicLevel">Academic Level</label>
+            <select id="academicLevel" name="academicLevel" required>
+                <option value="High School">High School</option>
+                <option value="College">College</option>
+                <option value="University">University</option>
+                <option value="PhD">PhD</option>
+            </select>
+
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+                <option value="History">History</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Biology">Biology</option>
+                <option value="Nursing">Nursing</option>
+                <option value="Calculus">Calculus</option>
+                <option value="Accounting">Accounting</option>
+                <!-- Add more dynamically if needed -->
+            </select>
+
+            <label for="deadline">Deadline</label>
+            <select id="deadline" name="deadline" required>
+                <option value="2">2 Hours</option>
+                <option value="4">4 Hours</option>
+                <option value="6">6 Hours</option>
+                <option value="12">12 Hours</option>
+                <option value="24">24 Hours</option>
+                <option value="48">2 Days</option>
+                <option value="72">3 Days</option>
+            </select>
+
+            <label for="jobType">Type of Job</label>
+            <select id="jobType" name="jobType" required>
+                <option value="Writing from Scratch">Writing from Scratch</option>
+                <option value="Revision">Revision</option>
+                <option value="Dissertation">Dissertation</option>
+                <option value="Calculation">Calculation</option>
+                <option value="Problem Solving">Problem Solving</option>
+            </select>
+
+            <label for="workType">Work Type</label>
+            <select id="workType" name="workType" required>
+                <option value="Essay">Essay</option>
+                <option value="Slides">Slides</option>
+                <option value="Problems">Problems</option>
+                <option value="QA Assignment">QA Assignment</option>
+                <option value="Multiple Choice">Multiple Choice</option>
+            </select>
+
+            <label for="pages">Number of Pages</label>
+            <input type="number" id="pages" name="pages" min="1" required>
+
+            <button type="button" id="calculatePriceBtn">Calculate Price</button>
+            <p id="priceDisplay">Total Price: $0.00</p>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2024 TopWrite. By Maxwell O. Ochieng. All Rights Reserved.</p>
+    </footer>
+
+    <script src="assets/js/pricing.js"></script>
+</body>
+</html>

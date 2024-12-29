@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - Writer Dashboard</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard-writer-payments.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.PNG" alt="TopWrite Logo">
+            <h1>TopWrite Essay Writers</h1>
+        </div>
+        <div class="writer-info">
+            <img src="assets/images/default-profile.png" alt="Profile Picture" id="profilePicture" class="profile-pic" onclick="openWriterProfile()">
+            <div class="writer-details">
+                <p><strong>ID:</strong> WR12345</p>
+                <p><strong>Name:</strong> Paul. S</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="side-menu">
+            <ul>
+                <li><a href="dashboard-writer.html">Dashboard</a></li>
+                <li><a href="dashboard-writer-orders.html">Orders</a></li>
+                <li><a href="dashboard-writer-profile.html">Profile</a></li>
+                <li><a href="dashboard-writer-payments.html" class="active">Payments</a></li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-main">
+            <h1>Payment Summary</h1>
+
+            <!-- Enhanced Payment Summary -->
+            <div class="payment-summary">
+                <div class="summary-card">
+                    <h3>Pending Payment</h3>
+                    <p>$<span id="pendingPayment">0</span></p>
+                </div>
+                <div class="summary-card">
+                    <h3>Upcoming Payments</h3>
+                    <p>$<span id="upcomingPayments">0</span></p>
+                </div>
+                <div class="summary-card">
+                    <h3>Recent Payments</h3>
+                    <p>$<span id="recentPayments">0</span></p>
+                </div>
+                <div class="summary-card">
+                    <h3>Total Paid</h3>
+                    <p>$<span id="totalPaid">0</span></p>
+                </div>
+                <div class="summary-card">
+                    <h3>Canceled Amount</h3>
+                    <p>$<span id="canceledAmount">0</span></p>
+                </div>
+            </div>
+
+            <!-- Payment History Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Payment ID</th>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="paymentsTable">
+                    <!-- Orders dynamically populated -->
+                </tbody>
+            </table>
+        </main>
+
+        <!-- Order Details Modal -->
+        <div id="orderDetailsPopup" class="popup">
+            <div class="popup-content">
+                <h2>Order Details</h2>
+                <p><strong>Order Number:</strong> <span id="orderNumber"></span></p>
+                <p><strong>Title:</strong> <span id="orderTitle"></span></p>
+                <p><strong>Amount Paid:</strong> <span id="orderAmount"></span></p>
+                <p><strong>Status:</strong> <span id="orderStatus"></span></p>
+                <button onclick="closeOrderDetailsPopup()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 TopWrite. By Maxwell O. Ochieng. All Rights Reserved.</p>
+    </footer>
+
+    <script src="assets/js/dashboard-writer-payments.js" defer></script>
+</body>
+</html>

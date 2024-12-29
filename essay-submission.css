@@ -1,0 +1,42 @@
+.essay-submission-main {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.essay-submission-main h1 {
+    text-align: center;
+    color: #1e2a47;
+    margin-bottom: 20px;
+}
+
+.essay-topics {
+    margin-bottom: 20px;
+}
+
+.essay-topics label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background: #d4a017;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: #1e2a47;
+    color: #d4a017;
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Writer Dashboard</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard-writer-profile.css">
+    <style>
+        /* Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .dashboard-container {
+            display: flex;
+        }
+
+        .side-menu {
+            width: 20%;
+            background: #1e2a47;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .side-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .side-menu ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background 0.3s;
+        }
+
+        .side-menu ul li a:hover, .side-menu ul li a.active {
+            background: #d4a017;
+            color: #1e2a47;
+        }
+
+        .dashboard-main {
+            width: 80%;
+            padding: 20px;
+            background: #f8f8f2;
+        }
+
+        .dashboard-main h1 {
+            font-size: 1.8rem;
+            color: #1e2a47;
+            margin-bottom: 20px;
+        }
+
+        .profile-summary, .profile-edit {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-summary ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile-summary ul li {
+            margin-bottom: 10px;
+        }
+
+        form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #1e2a47;
+        }
+
+        form input, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #d4a017;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: #1e2a47;
+        }
+
+        form button {
+            background: #d4a017;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background: #1e2a47;
+            color: #d4a017;
+        }
+
+        .profile-image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+            border: 2px solid #d4a017;
+        }
+
+        .home-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #d4a017;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .home-button:hover {
+            background: #1e2a47;
+            color: #d4a017;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.PNG" alt="TopWrite Logo">
+            <h1>TopWrite Essay Writers</h1>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="side-menu">
+            <ul>
+                <li><a href="dashboard-writer.html">Dashboard</a></li>
+                <li><a href="dashboard-writer-orders.html">Orders</a></li>
+                <li><a href="dashboard-writer-profile.html" class="active">Profile</a></li>
+                <li><a href="dashboard-writer-payments.html">Payments</a></li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-main">
+            <a href="dashboard-writer.html" class="home-button">Home</a>
+            <h1>Profile / Edit Profile</h1>
+
+            <!-- Profile Summary Section -->
+            <div class="profile-summary">
+                <h2>Profile Summary</h2>
+                <ul>
+                    <li><strong>User ID:</strong> 1353680</li>
+                    <li><strong>Category:</strong> ENL (English Native Language)</li>
+                    <li><strong>Academic Level:</strong> High School</li>
+                </ul>
+            </div>
+
+            <!-- Profile Image Upload Section -->
+            <div class="profile-image-container">
+                <img src="assets/images/default-profile.png" alt="Profile Image" id="profileImage" class="profile-image">
+                <input type="file" id="profileImageUpload" accept="image/*" onchange="uploadProfileImage()">
+            </div>
+
+            <!-- Edit Profile Section -->
+            <div class="profile-edit">
+                <h2>Edit Profile</h2>
+                <form id="profileForm">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" value="John Doe" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="john.doe@example.com" required>
+
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" value="123 Example Street" required>
+
+                    <button type="submit">Save Changes</button>
+                </form>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>© 2024 TopWrite. By Maxwell O. Ochieng. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Profile Image Upload
+        function uploadProfileImage() {
+            const fileInput = document.getElementById('profileImageUpload');
+            const profileImage = document.getElementById('profileImage');
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        // Save Profile Changes
+        document.getElementById('profileForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Profile changes saved successfully!');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - Client Dashboard</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard-client-payments.css">
+    <script defer>
+        // Redirect Profile Picture to Profile Page
+        function openClientProfile() {
+            window.location.href = 'dashboard-client-profile.html';
+        }
+
+        // Redirect Add Payment Button to Payment Page
+        function redirectToPaymentPage() {
+            window.location.href = 'payment.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.PNG" alt="TopWrite Logo">
+            <h1>TopWrite Essay Writers</h1>
+        </div>
+        <div class="client-info">
+            <img src="assets/images/default-profile.png" alt="Profile Picture" id="profilePicture" class="profile-pic" onclick="openClientProfile()">
+            <div class="client-details">
+                <p><strong>ID:</strong> CL12345</p>
+                <p><strong>Name:</strong> John</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="side-menu">
+            <ul>
+                <li><a href="dashboard-client.html">Dashboard</a></li>
+                <li><a href="dashboard-client-orders.html">Orders</a></li>
+                <li><a href="dashboard-client-profile.html">Profile</a></li>
+                <li><a href="dashboard-client-payments.html" class="active">Payments</a></li>
+                <li><a href="order.html">Place New Order</a></li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-main">
+            <h1>Payment History</h1>
+
+            <!-- Client Balance -->
+            <div class="balance-summary">
+                <h2>Balance Summary</h2>
+                <p><strong>Used Balance:</strong> $400</p>
+                <p><strong>Not Used Balance:</strong> $150</p>
+            </div>
+
+            <!-- Payment History Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Payment ID</th>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="paymentsTable">
+                    <tr>
+                        <td>P001</td>
+                        <td><a href="#" onclick="viewOrderDetails('8639172')">8639172</a></td>
+                        <td>2024-01-15</td>
+                        <td>$250</td>
+                        <td>Paid</td>
+                    </tr>
+                    <tr>
+                        <td>P002</td>
+                        <td><a href="#" onclick="viewOrderDetails('8631566')">8631566</a></td>
+                        <td>2024-01-10</td>
+                        <td>$150</td>
+                        <td>Pending</td>
+                    </tr>
+                    <tr>
+                        <td>P003</td>
+                        <td><a href="#" onclick="viewOrderDetails('8606520')">8606520</a></td>
+                        <td>2024-01-12</td>
+                        <td>$320</td>
+                        <td>Paid</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button id="addPaymentButton" onclick="redirectToPaymentPage()">Add Payment</button>
+        </main>
+
+        <!-- Order Details Modal -->
+        <div id="orderDetailsPopup" class="popup">
+            <div class="popup-content">
+                <h2>Order Details</h2>
+                <p><strong>Order Number:</strong> <span id="orderNumber"></span></p>
+                <p><strong>Title:</strong> <span id="orderTitle"></span></p>
+                <p><strong>Amount Paid:</strong> <span id="orderAmount"></span></p>
+                <p><strong>Status:</strong> <span id="orderStatus"></span></p>
+                <button onclick="closeOrderDetailsPopup()">Close</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© 2024 TopWrite. By Maxwell O. Ochieng. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const orders = {
+            '8639172': {
+                orderNumber: '8639172',
+                title: 'Interdisciplinary Instructional Planning Project: Final',
+                amountPaid: '$250',
+                status: 'Paid',
+            },
+            '8631566': {
+                orderNumber: '8631566',
+                title: 'Interdisciplinary Instructional Planning Project: Lesson Plans 5-8',
+                amountPaid: '$150',
+                status: 'Pending',
+            },
+            '8606520': {
+                orderNumber: '8606520',
+                title: 'American Foreign Policy Analysis',
+                amountPaid: '$320',
+                status: 'Paid',
+            }
+        };
+
+        function viewOrderDetails(orderId) {
+            const order = orders[orderId];
+
+            if (order) {
+                document.getElementById('orderNumber').textContent = order.orderNumber;
+                document.getElementById('orderTitle').textContent = order.title;
+                document.getElementById('orderAmount').textContent = order.amountPaid;
+                document.getElementById('orderStatus').textContent = order.status;
+
+                document.getElementById('orderDetailsPopup').style.display = 'flex';
+            }
+        }
+
+        function closeOrderDetailsPopup() {
+            document.getElementById('orderDetailsPopup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

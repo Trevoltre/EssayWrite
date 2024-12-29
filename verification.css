@@ -1,0 +1,143 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #f4f4f9, #d4a017);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #1e2a47;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header .logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+/* Verification Container */
+.verification-container {
+    flex-grow: 1;
+    padding: 20px;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.verification-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1e2a47;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #1e2a47;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+}
+
+input:focus,
+select:focus {
+    border-color: #d4a017;
+    box-shadow: 0 0 5px #d4a017;
+}
+
+.phone-group {
+    display: flex;
+    gap: 10px;
+}
+
+.phone-group select {
+    width: 30%;
+}
+
+.phone-group input {
+    width: 70%;
+}
+
+.verify-btn,
+.submit-btn {
+    background-color: #d4a017;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.verify-btn:hover,
+.submit-btn:hover {
+    background-color: #1e2a47;
+    color: #d4a017;
+}
+
+/* Code Boxes */
+.code-container {
+    margin-top: 15px;
+}
+
+.code-boxes {
+    display: flex;
+    gap: 10px;
+}
+
+.code-boxes input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.status-message {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #1e2a47;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

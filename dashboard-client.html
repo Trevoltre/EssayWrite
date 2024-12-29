@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard - TopWrite Essay Writers</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard-client.css">
+    <script src="assets/js/dashboard-client.js" defer></script>
+    <style>
+        /* Dashboard Styles */
+        .dashboard-main {
+            padding: 20px;
+            background: #f8f8f2;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-main h1 {
+            font-size: 1.8rem;
+            color: #1e2a47;
+            margin-bottom: 20px;
+        }
+
+        .order-history {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .order-history th, .order-history td {
+            padding: 10px 15px;
+            text-align: left;
+            border: 1px solid #d4a017;
+        }
+
+        .order-history th {
+            background-color: #1e2a47;
+            color: white;
+        }
+
+        .order-history td {
+            background-color: white;
+            color: #333;
+        }
+
+        .order-history tr:hover {
+            background-color: #f8f8f2;
+        }
+
+        .ratings {
+            color: #d4a017;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.PNG" alt="TopWrite Logo">
+            <h1>TopWrite Essay Writers</h1>
+        </div>
+        <div class="client-info">
+            <img src="assets/images/default-profile.png" alt="Profile Picture" id="profilePicture" class="profile-pic" onclick="openClientProfile()">
+            <div class="client-details">
+                <p><strong>ID:</strong> CL12345</p>
+                <p><strong>Name:</strong> John</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="side-menu">
+            <ul>
+                <li><a href="dashboard-client.html" class="active">Dashboard</a></li>
+                <li><a href="dashboard-client-orders.html">Orders</a></li>
+                <li><a href="dashboard-client-profile.html">Profile</a></li>
+                <li><a href="dashboard-client-payments.html">Payments</a></li>
+                <li><a href="order.html">Place New Order</a></li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-main">
+            <h1>Welcome to Your Dashboard</h1>
+            <p>Manage your orders, update your profile, and track payments using the menu.</p>
+
+            <h2>Order History</h2>
+            <table class="order-history">
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Topic</th>
+                        <th>Pages/Length</th>
+                        <th>Amount Paid</th>
+                        <th>Payment Condition</th>
+                        <th>Ratings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>Climate Change Research</td>
+                        <td>15 Pages</td>
+                        <td>$200</td>
+                        <td>Fully Paid</td>
+                        <td><span class="ratings">4.5</span>/5</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Artificial Intelligence in Healthcare</td>
+                        <td>10 Pages</td>
+                        <td>$150</td>
+                        <td>Partially Paid</td>
+                        <td><span class="ratings">4.8</span>/5</td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>History of Renaissance Art</td>
+                        <td>8 Pages</td>
+                        <td>$120</td>
+                        <td>Fully Paid</td>
+                        <td><span class="ratings">4.2</span>/5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <!-- Support Popup -->
+    <div id="supportPopup" class="popup">
+        <div class="popup-content">
+            <h2>Contact Support</h2>
+            <form id="supportForm">
+                <label for="supportMessage">Your Message</label>
+                <textarea id="supportMessage" name="supportMessage" rows="5" required></textarea>
+                <button type="submit">Send</button>
+                <button type="button" onclick="closeSupportPopup()">Close</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>© 2024 TopWrite. By Maxwell O. Ochieng. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

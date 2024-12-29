@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approved - TopWrite</title>
+    <link rel="stylesheet" href="assets/css/approved.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="TopWrite Logo" class="logo-img">
+            <h1>Verification Status</h1>
+        </div>
+    </header>
+    <main class="status-container">
+        <div class="status-card">
+            <h2 class="approved">Congratulations! Your Account is Approved</h2>
+            <p>You can now log in to your writer dashboard and start working on amazing projects.</p>
+            <button class="action-btn" onclick="redirectToLogin()">Log In</button>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 TopWrite. By Maxwell O. Ochieng. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function redirectToLogin() {
+            window.location.href = "writer-login.html";
+        }
+    </script>
+</body>
+</html>

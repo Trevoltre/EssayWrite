@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Client Dashboard</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard-client-orders.css">
+    <style>
+        /* Page Styling */
+        .dashboard-main {
+            padding: 20px;
+            background: #f8f8f2;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-main h1 {
+            font-size: 1.8rem;
+            color: #1e2a47;
+            margin-bottom: 20px;
+        }
+
+        .order-tabs {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: #1e2a47;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: #d4a017;
+            color: #1e2a47;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 10px 15px;
+            border: 1px solid #d4a017;
+        }
+
+        table th {
+            background: #1e2a47;
+            color: white;
+        }
+
+        table td {
+            background: white;
+        }
+
+        table tr:hover {
+            background: #f8f8f2;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            background: #d4a017;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .action-btn:hover {
+            background: #1e2a47;
+            color: #d4a017;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .popup-content h2 {
+            font-size: 1.5rem;
+            color: #1e2a47;
+            margin-bottom: 15px;
+        }
+
+        .popup-content p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .popup-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .popup-content ul li {
+            margin: 5px 0;
+        }
+
+        .popup-content button {
+            padding: 10px 20px;
+            background: #d4a017;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+
+        .popup-content button:hover {
+            background: #1e2a47;
+            color: #d4a017;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.PNG" alt="TopWrite Logo">
+            <h1>TopWrite Essay Writers</h1>
+        </div>
+        <div class="client-info">
+            <img src="assets/images/default-profile.png" alt="Profile Picture" id="profilePicture" class="profile-pic" onclick="openClientProfile()">
+            <div class="client-details">
+                <p><strong>ID:</strong> CL12345</p>
+                <p><strong>Name:</strong> Elias</p>
+            </div>
+    </header>
+    
+    <div class="dashboard-container">
+        <aside class="side-menu">
+            <ul>
+                <li><a href="dashboard-client.html">Dashboard</a></li>
+                <li><a href="dashboard-client-orders.html" class="active">Orders</a></li>
+                <li><a href="dashboard-client-profile.html">Profile</a></li>
+                <li><a href="dashboard-client-payments.html">Payments</a></li>
+                <li><a href="order.html">Place New Order</a></li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-main">
+            <h1>Your Orders</h1>
+
+            <!-- Tabs for Order Categories -->
+            <div class="order-tabs">
+                <button class="tab-btn active" onclick="filterOrders('in-progress', this)">In Progress</button>
+                <button class="tab-btn" onclick="filterOrders('revision', this)">Revision</button>
+                <button class="tab-btn" onclick="filterOrders('completed', this)">Completed</button>
+                <button class="tab-btn" onclick="filterOrders('canceled', this)">Canceled</button>
+                <button class="tab-btn" onclick="filterOrders('on-hold', this)">On Hold</button>
+            </div>
+
+            <!-- Orders Table -->
+            <table id="ordersTable">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody">
+                    <!-- Orders will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </main>
+
+        <!-- Order Details Modal -->
+        <div id="orderDetailsPopup" class="popup">
+            <div class="popup-content">
+                <h2>Order Details</h2>
+                <p><strong>Order Number:</strong> <span id="orderNumber"></span></p>
+                <p><strong>Title:</strong> <span id="orderTitle"></span></p>
+                <p><strong>Subject:</strong> <span id="orderSubject"></span></p>
+                <p><strong>Formatting Style:</strong> <span id="orderFormatting"></span></p>
+                <p><strong>Number of Sources:</strong> <span id="orderSources"></span></p>
+                <p><strong>Deadline:</strong> <span id="orderDeadline"></span></p>
+                <p><strong>Number of Pages:</strong> <span id="orderPages"></span></p>
+                <p><strong>Amount:</strong> <span id="orderAmount"></span></p>
+                <h3>Instructions</h3>
+                <p id="orderInstruction"></p>
+                <h3>Uploaded Files</h3>
+                <ul id="orderUploads"></ul>
+                <button onclick="closeOrderDetailsPopup()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 TopWrite. By Maxwell O. Ochieng. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const orders = {
+            'in-progress': [
+                {
+                    id: '8639172',
+                    title: 'Interdisciplinary Instructional Planning Project: Final',
+                    status: 'In Progress',
+                    price: '$250',
+                    subject: 'Education',
+                    formatting: 'APA(7th Edition)',
+                    sources: '~',
+                    deadline: 'Dec 10, 2024 at 09:47 PM',
+                    instruction: `PLEASE READ ATTACHED INSTRUCTIONS BEFORE ACCEPTING ORDER!! THIS IS THE FINAL PART OF AN ONGOING ASSIGNMENT THAT WILL NEED TO BE COMBINED UPON COMPLETION!!
+                                EACH FULL LESSON PLAN MUST CONTAIN CURRENT APA FORMATTED REFERENCES!! FOLLOW ALL INSTRUCTIONS.`,
+                    pages: '7.0 pages (1925 words, double spaced)',
+                    uploads: ['instructions.pdf', 'references.docx']
+                }
+            ],
+            'revision': [
+                {
+                    id: '8631566',
+                    title: 'Interdisciplinary Instructional Planning Project: Lesson Plans 5-8',
+                    status: 'Revision',
+                    price: '$150',
+                    subject: 'Education',
+                    formatting: 'APA(7th Edition)',
+                    sources: '~',
+                    deadline: 'Nov 29, 2024 at 05:12 PM',
+                    instruction: `PLEASE READ INSTRUCTIONS THROUGHLY!! COMPLETE LESSONS 5-8 AS PER INSTRUCTIONS.
+                                FOLLOW ALL GUIDELINES WITH DETAILED FORMATTING.`,
+                    pages: '4.0 pages (1100 words, double spaced)',
+                    uploads: ['lesson5to8.pdf']
+                }
+            ],
+            'completed': [
+                {
+                    id: '8606520',
+                    title: 'American Foreign Policy Analysis',
+                    status: 'Completed',
+                    price: '$320',
+                    subject: 'Other',
+                    formatting: 'MLA',
+                    sources: '15',
+                    deadline: 'Nov 23, 2024 at 03:52 AM',
+                    instruction: `ANALYZE U.S. FOREIGN POLICY WITH HISTORICAL CONTEXT AND CURRENT APPLICATIONS.
+                                INCLUDE 15 SOURCES FROM RELIABLE DATABASES.`,
+                    pages: '8.0 pages (2200 words, double spaced)',
+                    uploads: ['analysis.pdf']
+                }
+            ],
+            'canceled': [
+                {
+                    id: '8505123',
+                    title: 'Data Analytics Homework Assignment',
+                    status: 'Canceled',
+                    price: '$0',
+                    subject: 'Other',
+                    formatting: 'APA(6th Edition)',
+                    sources: '~',
+                    deadline: 'Nov 13, 2024 at 02:06 PM',
+                    instruction: `COMPLETE QUESTIONS ON DATASETS, PYTHON, SQL, AND TABLEAU.
+                                INCLUDE ALL NECESSARY CODE SNIPPETS.`,
+                    pages: '10.0 pages (2750 words, double spaced)',
+                    uploads: []
+                }
+            ],
+            'on-hold': [
+                {
+                    id: '8639999',
+                    title: 'Research Methodology and Proposal Draft',
+                    status: 'On Hold',
+                    price: '$180',
+                    subject: 'Research',
+                    formatting: 'APA(7th Edition)',
+                    sources: '10',
+                    deadline: 'Dec 15, 2024 at 12:00 PM',
+                    instruction: `WRITE A RESEARCH METHODOLOGY INCLUDING PROPOSAL FORMAT.
+                                PROVIDE CLEAR STRUCTURE FOR FURTHER ANALYSIS.`,
+                    pages: '6.0 pages (1500 words, double spaced)',
+                    uploads: ['proposal.pdf', 'references.docx']
+                }
+            ]
+        };
+
+        function filterOrders(category, button) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const ordersBody = document.getElementById('ordersBody');
+            ordersBody.innerHTML = '';
+            if (orders[category] && orders[category].length > 0) {
+                orders[category].forEach(order => {
+                    const row = `
+                        <tr>
+                            <td>${order.id}</td>
+                            <td>${order.title}</td>
+                            <td>${order.status}</td>
+                            <td>${order.price}</td>
+                            <td><button class="action-btn" onclick="viewOrderDetails('${order.id}', '${category}')">View</button></td>
+                        </tr>
+                    `;
+                    ordersBody.insertAdjacentHTML('beforeend', row);
+                });
+            } else {
+                ordersBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">No orders in this category.</td></tr>`;
+            }
+        }
+
+        function viewOrderDetails(orderId, category) {
+            const order = orders[category].find(o => o.id === orderId);
+            if (order) {
+                document.getElementById('orderNumber').textContent = order.id;
+                document.getElementById('orderTitle').textContent = order.title;
+                document.getElementById('orderSubject').textContent = order.subject;
+                document.getElementById('orderFormatting').textContent = order.formatting;
+                document.getElementById('orderSources').textContent = order.sources;
+                document.getElementById('orderDeadline').textContent = order.deadline;
+                document.getElementById('orderInstruction').textContent = order.instruction;
+                document.getElementById('orderPages').textContent = order.pages;
+                document.getElementById('orderAmount').textContent = order.price;
+
+                const uploads = document.getElementById('orderUploads');
+                uploads.innerHTML = order.uploads.length
+                    ? order.uploads.map(file => `<li>${file}</li>`).join('')
+                    : '<li>No files uploaded.</li>';
+
+                document.getElementById('orderDetailsPopup').style.display = 'flex';
+            }
+        }
+
+        function closeOrderDetailsPopup() {
+            document.getElementById('orderDetailsPopup').style.display = 'none';
+        }
+
+        filterOrders('in-progress', document.querySelector('.tab-btn.active'));
+    </script>
+</body>
+</html>

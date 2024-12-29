@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Selection</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/subject-selection.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.PNG" alt="TopWrite Logo">
+            <h1>TopWrite Essay Writers</h1>
+        </div>
+    </header>
+
+    <main class="subject-selection-main">
+        <h1>Select Your Subjects</h1>
+        <p>Please choose between 3 to 8 subjects you are proficient in.</p>
+        <form id="subjectForm">
+            <!-- Social Sciences -->
+            <div class="subject-group">
+                <h2>Social Sciences</h2>
+                <label><input type="checkbox" name="subject" value="Sociology"> Sociology</label>
+                <label><input type="checkbox" name="subject" value="Psychology"> Psychology</label>
+                <label><input type="checkbox" name="subject" value="Political Science"> Political Science</label>
+                <label><input type="checkbox" name="subject" value="Economics"> Economics</label>
+                <label><input type="checkbox" name="subject" value="Anthropology"> Anthropology</label>
+                <label><input type="checkbox" name="subject" value="Geography"> Geography</label>
+            </div>
+
+            <!-- Natural Sciences -->
+            <div class="subject-group">
+                <h2>Natural Sciences</h2>
+                <label><input type="checkbox" name="subject" value="Biology"> Biology</label>
+                <label><input type="checkbox" name="subject" value="Chemistry"> Chemistry</label>
+                <label><input type="checkbox" name="subject" value="Physics"> Physics</label>
+                <label><input type="checkbox" name="subject" value="Environmental Science"> Environmental Science</label>
+                <label><input type="checkbox" name="subject" value="Astronomy"> Astronomy</label>
+                <label><input type="checkbox" name="subject" value="Zoology"> Zoology</label>
+            </div>
+
+            <!-- Humanities -->
+            <div class="subject-group">
+                <h2>Humanities</h2>
+                <label><input type="checkbox" name="subject" value="History"> History</label>
+                <label><input type="checkbox" name="subject" value="Philosophy"> Philosophy</label>
+                <label><input type="checkbox" name="subject" value="Linguistics"> Linguistics</label>
+                <label><input type="checkbox" name="subject" value="Literature"> Literature</label>
+                <label><input type="checkbox" name="subject" value="Religious Studies"> Religious Studies</label>
+                <label><input type="checkbox" name="subject" value="Art History"> Art History</label>
+            </div>
+
+            <!-- Engineering & Technology -->
+            <div class="subject-group">
+                <h2>Engineering & Technology</h2>
+                <label><input type="checkbox" name="subject" value="Civil Engineering"> Civil Engineering</label>
+                <label><input type="checkbox" name="subject" value="Mechanical Engineering"> Mechanical Engineering</label>
+                <label><input type="checkbox" name="subject" value="Electrical Engineering"> Electrical Engineering</label>
+                <label><input type="checkbox" name="subject" value="Computer Science"> Computer Science</label>
+                <label><input type="checkbox" name="subject" value="Information Technology"> Information Technology</label>
+                <label><input type="checkbox" name="subject" value="Software Engineering"> Software Engineering</label>
+            </div>
+
+            <!-- Business & Management -->
+            <div class="subject-group">
+                <h2>Business & Management</h2>
+                <label><input type="checkbox" name="subject" value="Business Administration"> Business Administration</label>
+                <label><input type="checkbox" name="subject" value="Marketing"> Marketing</label>
+                <label><input type="checkbox" name="subject" value="Finance"> Finance</label>
+                <label><input type="checkbox" name="subject" value="Human Resource Management"> Human Resource Management</label>
+                <label><input type="checkbox" name="subject" value="Accounting"> Accounting</label>
+                <label><input type="checkbox" name="subject" value="Supply Chain Management"> Supply Chain Management</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2024 TopWrite. By Maxwell O. Ochieng. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("subjectForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Get selected subjects
+            const selectedSubjects = Array.from(document.querySelectorAll("input[name='subject']:checked"))
+                .map(input => input.value);
+
+            // Validate the number of selected subjects
+            if (selectedSubjects.length < 3) {
+                alert("You must select at least 3 subjects.");
+                return;
+            }
+
+            if (selectedSubjects.length > 8) {
+                alert("You can select a maximum of 8 subjects.");
+                return;
+            }
+
+            // Success: Proceed to the next step
+            alert(`Subjects Selected: ${selectedSubjects.join(", ")}\nProceeding to Essay Submission.`);
+            window.location.href = "essay-submission.html";
+        });
+    </script>
+</body>
+</html>

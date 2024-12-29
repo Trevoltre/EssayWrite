@@ -1,0 +1,151 @@
+/* Page-wide background with semi-transparent overlay */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(30, 42, 71, 0.9); /* Navy blue with transparency */
+    padding: 15px 20px;
+    color: white;
+}
+
+header .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    background-color: #d4a017;
+}
+
+/* Hero Section */
+.hero-image {
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fallback for overlay */
+}
+
+.hero-image .overlay {
+    background-color: rgba(0, 0, 0, 0.6); /* Increased transparency */
+    padding: 20px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.hero-image .button-container {
+    margin-top: 15px;
+}
+
+.hero-image .btn {
+    background-color: #d4a017;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, color 0.3s ease-in-out;
+}
+
+.hero-image .btn:hover {
+    transform: scale(1.05); /* Slightly enlarge */
+    color: #1e2a47; /* Navy blue */
+}
+
+/* Blog Section */
+.blog {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.blog h2 {
+    color: #1e2a47;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.blog p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Services Section */
+.service-list {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.service-list h2 {
+    color: #1e2a47;
+    margin-bottom: 15px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.service-btn {
+    background-color: #d4a017;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 15px; /* Rounded corners */
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.service-btn:hover {
+    background-color: #1e2a47; /* Navy blue */
+    transform: scale(1.1); /* Enlarge on hover */
+}

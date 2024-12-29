@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopWrite - Professional Writing Services</title>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/homepage.css">
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('assets/images/background2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(30, 42, 71, 0.9);
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background: #d4a017;
+            z-index: -1;
+            transition: width 0.5s ease;
+            border-radius: 20px;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #1e2a47;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: rgba(30, 42, 71, 0.8);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .hero .btn {
+            padding: 15px 30px;
+            background: transparent;
+            color: white;
+            border: 3px solid white;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #d4a017;
+            z-index: -1;
+            transition: width 0.5s ease-in-out;
+            border-radius: 20px;
+        }
+
+        .hero .btn:hover::after {
+            width: 100%;
+        }
+
+        .hero .btn:hover {
+            color: #1e2a47;
+            transform: scale(1.05);
+        }
+
+        /* Section Line */
+        .section-line {
+            height: 5px;
+            width: 0;
+            background: #d4a017;
+            margin: 40px auto;
+            box-shadow: 0 0 10px rgba(212, 160, 23, 0.8);
+            transition: width 0.5s ease;
+        }
+
+        .section.active .section-line {
+            width: 100%;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 100px 50px;
+            text-align: center;
+            background: url('assets/images/background4.avif') no-repeat center center;
+            background-size: cover;
+            color: #ffffff;
+        }
+
+        .services-section h2 {
+            margin-bottom: 20px;
+            font-size: 2.8rem;
+        }
+
+        .services-description {
+            margin-bottom: 40px;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .services-list a {
+            text-decoration: none;
+            padding: 20px;
+            background: rgba(30, 42, 71, 0.9)
+            color: #1e2a47;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .services-list a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Links Section */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            padding: 40px 20px;
+            background-color: rgba(30, 42, 71, 0.9);
+            color: white;
+        }
+
+        .footer-grid h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: #d4a017;
+        }
+
+        .footer-grid a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-grid a:hover {
+            color: #d4a017;
+            transform: translateX(5px);
+        }
+
+        .footer-grid .payment-options a {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .footer-grid .payment-options a:hover {
+            transform: scale(1.15);
+        }
+
+        /* Footer Section */
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: rgba(30, 42, 71, 0.9);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="assets/images/logo.png" alt="TopWrite Logo" class="logo">
+            <h1>TopWrite</h1>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Welcome to TopWrite</h1>
+            <p>Your trusted partner for professional academic writing services.</p>
+            <a href="signin.html" class="btn">Sign In</a>
+            <a href="signup.html" class="btn">Get Started</a>
+        </section>
+
+        <div class="section-line"></div>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <h2>Our Services</h2>
+            <p class="services-description">Explore our range of professional writing services designed to help you achieve academic success.</p>
+            <div class="services-list">
+                <a href="order.html">Essay Writing</a>
+                <a href="order.html">Research Papers</a>
+                <a href="order.html">Case Studies</a>
+                <a href="order.html">Dissertations</a>
+                <a href="order.html">Presentations</a>
+                <a href="order.html">Proofreading</a>
+            </div>
+        </section>
+<!-- Top Writers Section -->
+<section class="top-writers">
+    <h2 class="section-title">Meet Our Top Writers</h2>
+    <div class="carousel-container">
+        <button class="carousel-btn left-btn" onclick="scrollWriters(-1)">&#10094;</button>
+        <div class="carousel" id="writersCarousel">
+            <div class="card">
+                <img src="assets/images/default-profile.png" alt="Maxwel Ochieng">
+            <h3>Maxwel Ochieng</h3>
+            <p>Rating: 5.0 ★</p>
+            <p>Specialist in academic and technical writing.</p>
+        </div>
+        <div class="writer-card">
+            <img src="assets/images/client2.jpg" alt="Dorothy Chepkirui">
+            <h3>Dorothy Chepkirui</h3>
+            <p>Rating: 5.0 ★</p>
+            <p>Expert in creative writing and blogs.</p>
+        </div>
+        <div class="writer-card">
+            <img src="assets/images/client3.jpg" alt="Willys Odhiambo">
+            <h3>Willys Odhiambo</h3>
+            <p>Rating: 5.0 ★</p>
+            <p>Skilled in SEO content and marketing materials.</p>
+        </div>
+        <div class="writer-card">
+            <img src="assets/images/client4.jpg" alt="Paul Kanyi">
+            <h3>Paul Kanyi</h3>
+            <p>Rating: 5.0 ★</p>
+            <p>Focuses on research papers and essays.</p>
+        </div>
+        <div class="writer-card">
+            <img src="assets/images/client4.jpg" alt="Paul Kanyi">
+            <h3>Aphline Awuor</h3>
+            <p>Rating: 4.9 ★</p>
+            <p>Specialist in academic and technical writing.</p>
+        </div>
+        <div class="writer-card">
+            <img src="assets/images/client4.jpg" alt="Paul Kanyi">
+            <h3>Grayson Bay</h3>
+            <p>Rating: 4.8 ★</p>
+            <p>Expert in creative writing and blogs.</p>
+        </div>
+        <div class="writer-card">
+            <img src="assets/images/client4.jpg" alt="Paul Kanyi">
+            <h3>Daniel Musyoka</h3>
+            <p>Rating: 4.7 ★</p>
+            <p>Skilled in SEO content and marketing materials.</p>
+        </div>
+        <div class="writer-card">
+            <img src="assets/images/client4.jpg" alt="Paul Kanyi">
+            <h3>Naomi Boadi</h3>
+            <p>Rating: 4.6 ★</p>
+            <p>Focuses on research papers and essays.</p>
+        </div>
+        <button class="carousel-btn right-btn" onclick="scrollCarousel('writersCarousel', 300)">&#10095;</button>
+        <!-- Add more writers -->
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <h2 class="section-title">What Our Clients Say</h2>
+    <div class="carousel-container">
+        <button class="carousel-btn left-btn" onclick="scrollTestimonials(-1)">&#10094;</button>
+        <div class="carousel" id="testimonialsCarousel">
+            <div class="card">
+                <img src="assets/images/client2.jpg" alt="Jane Smith">
+                <p>"TopWrite helped me achieve my academic goals! Highly recommend."</p>
+                <p>- Jane Smith</p>
+            </div>
+        <div class="testimonial-card">
+            <img src="assets/images/client3.jpg" alt="Mark S">
+            <p>"The quality and timely delivery were outstanding."</p>
+            <p>- Mark S.</p>
+        </div>
+        <div class="testimonial-card">
+            <img src="assets/images/client4.jpg" alt="Phelix Assa">
+            <p>"TopWrite helped me achieve my academic goals! Highly recommend."</p>
+            <p>- Phelix Assa</p>
+        </div>
+        <div class="testimonial-card">
+            <img src="assets/images/client2.jpg" alt="Phelix Assa">
+            <p>"The quality and timely delivery were outstanding."</p>
+            <p>- Lilian Mose.</p>
+        </div><div class="testimonial-card">
+            <img src="assets/images/client4.jpg" alt="Phelix Assa">
+            <p>"TopWrite helped me achieve my academic goals! Highly recommend."</p>
+            <p>- William Ruto</p>
+        </div>
+        <div class="testimonial-card">
+            <img src="assets/images/client3.jpg" alt="Phelix Assa">
+            <p>"The quality and timely delivery were outstanding."</p>
+            <p>- Ndindi Nyoro.</p>
+        </div>
+        <button class="carousel-btn right-btn" onclick="scrollCarousel('testimonialsCarousel', 300)">&#10095;</button>
+        <!-- Add more testimonials -->
+    </div>
+        <div class="section-line"></div>
+
+        <!-- Footer Links Section -->
+        <section class="footer-grid">
+            <div>
+                <h3>Legal & Policies</h3>
+                <a href="policy.html">Terms & Conditions</a><br>
+                <a href="policy.html">Refund Policy</a><br>
+                <a href="policy.html">Privacy Policy</a><br>
+            </div>
+            <div>
+                <h3>TopWrite Products</h3>
+                <a href="services.html">Essay Writing App</a><br>
+                <a href="services.html">Citation Generator</a><br>
+            </div>
+            <div>
+                <h3>Popular Services</h3>
+                <a href="services.html">Dissertation Writing</a><br>
+                <a href="services.html">Research Papers</a><br>
+            </div>
+            <div>
+                <h3>Other</h3>
+                <a href="blog.html">Blog</a><br>
+                <a href="writer-register.html">Become an Expert</a><br>
+            </div>
+            <div class="payment-options">
+                <h3>Payment Options</h3>
+                <a href="payment.html" class="skrill">Skrill</a>
+                <a href="payment.html" class="paypal">PayPal</a>
+                <a href="payment.html" class="payoneer">Payoneer</a>
+            </div>
+        </section>
+
+        <div class="section-line"></div>
+    </main>
+    <footer>
+        <p>© 2024 TopWrite. All rights reserved. Maxwell O Ochieng</p>
+    </footer>
+</body>
+</html>
